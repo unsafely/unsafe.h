@@ -1,6 +1,6 @@
 # `unsafe` keywrod in C/C++
 
-`unsafe.h` provide a way to specify the potential unsafe operations, include memory-unsafe, thread-unsafe, type-unsafe and any other unsafe operations. 
+`unsafe.h` provide a way to specify the potential unsafe operations, include memory-unsafe, thread-unsafe, type-unsafe and any other unsafe operations.
 
 It is recommended to use it widely in C/C++ projects because it is very helpful to remind people to be careful with bad code. We strongly recommend someone propose this to C/C++ standard commitee as a built-in language feature.
 
@@ -37,6 +37,7 @@ unsafe int get_f2(struct s s1)
     /* this statement is unsafe because it accesses an unsafe field */
     unsafe
     {
+        /* the expression level unsafe is omitted because there is already a high-level one */
         return s1.f2;
     }
 }
@@ -44,7 +45,7 @@ unsafe int get_f2(struct s s1)
 /* this is unsafe because it has unsafe expression */
 unsafe int main()
 {
-    struct s s1;
+    unsafe struct s s1;
     /* this is unsafe because it captures an unsafe function call */
     unsafe int i1 = get_f2(s1);
 
